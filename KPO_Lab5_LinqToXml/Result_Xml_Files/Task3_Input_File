@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Main comment-->
+<root>
+  <!--root comment1-->
+  <line>
+    <word>line</word>
+  </line>
+  <!--root comment2-->
+  <line>
+    <word>line</word>
+    <!--level 1 comment-->
+    <word>more</word>
+    <word>one</word>
+  </line>
+  <last_line>
+    <word>final</word>
+    <word>line</word>
+  </last_line>
+</root>

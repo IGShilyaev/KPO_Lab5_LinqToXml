@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <line byorder="first">
+    <word>line</word>
+  </line>
+  <line>
+    <word byorder="first">line</word>
+    <word>more</word>
+    <word>one</word>
+  </line>
+  <line byorder="last">
+    <word>final</word>
+    <word>line</word>
+  </line>
+</root>

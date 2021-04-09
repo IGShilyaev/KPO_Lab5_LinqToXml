@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Main comment-->
+<root>
+  <line>
+    <word>line</word>
+  </line>
+  <line>
+    <word>line</word>
+    <word>more</word>
+    <word>one</word>
+  </line>
+  <last_line>
+    <word>final</word>
+    <word>line</word>
+  </last_line>
+</root>

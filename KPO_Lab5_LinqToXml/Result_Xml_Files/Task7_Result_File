@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <y2005>
+    <m11>
+      <client id="12" time="55" />
+      <client id="13" time="90" />
+    </m11>
+  </y2005>
+  <y2002>
+    <m9>
+      <client id="10" time="150" />
+    </m9>
+  </y2002>
+  <y2000>
+    <m4>
+      <client id="11" time="75" />
+    </m4>
+  </y2000>
+</root>

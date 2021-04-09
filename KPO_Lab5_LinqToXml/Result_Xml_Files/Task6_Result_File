@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<r:root xmlns:r="https://ru.wikipedia.org/wiki/XML">
+  <r:line byorder="first" number="7,5">
+    <r:word>line</r:word>
+  </r:line>
+  <r:line xmlns:l="https://ru.wikipedia.org/wiki/Language_Integrated_Query" number="6,7">
+    <r:word byorder="first">line</r:word>
+    <r:word number="8,2">more</r:word>
+    <r:word number="6,3">one</r:word>
+    <r:test>
+      <t:lvl3elem xmlns:t="https://ru.wikipedia.org/wiki/Wikipedia">HiHi</t:lvl3elem>
+    </r:test>
+  </r:line>
+  <r:line byorder="last">
+    <r:word number="3,3">final</r:word>
+    <r:word>line</r:word>
+  </r:line>
+</r:root>

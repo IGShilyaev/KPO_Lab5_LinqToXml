@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Второй>
+    <ул.Лебедева brand92="0" brand95="0" brand98="0" brand99="0" />
+    <ул.Садовая brand92="2100" brand95="0" brand98="0" brand99="0" />
+    <ул.Чехова brand92="2250" brand95="2500" brand98="2300" brand99="0" />
+  </Второй>
+  <Лидер>
+    <ул.Лебедева brand92="0" brand95="0" brand98="0" brand99="0" />
+    <ул.Садовая brand92="2150" brand95="2450" brand98="2300" brand99="0" />
+    <ул.Чехова brand92="2200" brand95="0" brand98="0" brand99="0" />
+  </Лидер>
+  <Тестовый>
+    <ул.Лебедева brand92="0" brand95="0" brand98="0" brand99="3000" />
+    <ул.Садовая brand92="0" brand95="0" brand98="0" brand99="0" />
+    <ул.Чехова brand92="0" brand95="0" brand98="0" brand99="0" />
+  </Тестовый>
+</Root>

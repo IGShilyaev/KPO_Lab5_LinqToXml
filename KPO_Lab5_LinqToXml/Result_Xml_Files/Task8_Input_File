@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <brand92 station="ул.Чехова_Лидер" price="2200" />
+  <brand95 station="ул.Чехова_Второй" price="2500" />
+  <brand95 station="ул.Садовая_Лидер" price="2450" />
+  <brand98 station="ул.Садовая_Лидер" price="2300" />
+  <brand92 station="ул.Садовая_Второй" price="2100" />
+  <brand92 station="ул.Садовая_Лидер" price="2150" />
+  <brand92 station="ул.Чехова_Второй" price="2250" />
+  <brand98 station="ул.Чехова_Второй" price="2300" />
+  <brand99 station="ул.Лебедева_Тестовый" price="3000"/>
+</root>

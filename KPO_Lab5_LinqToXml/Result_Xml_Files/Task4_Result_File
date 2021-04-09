@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <line>
+    <word>line</word>
+    <byorder>first</byorder>
+  </line>
+  <line>
+    <word byorder="first">line</word>
+    <word>more</word>
+    <word>one</word>
+  </line>
+  <line>
+    <word>final</word>
+    <word>line</word>
+    <byorder>last</byorder>
+  </line>
+</root>
