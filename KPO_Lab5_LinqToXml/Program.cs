@@ -17,13 +17,16 @@ namespace KPO_Lab5_LinqToXml
             Console.WriteLine("Task 1: Completed\nCreated Xml file - Task1_Result_File\n");
             
             Console.WriteLine("Task 2: Start...");
-            Dictionary<string, int> names = Task2();
-            Console.WriteLine("Task 2: Completed\nResults:");
-            foreach (var entry in names)
-            {
-                Console.WriteLine(entry.Key + "\t| " + entry.Value);
-            }
+            
+            Task2();
+            Console.WriteLine("Task 2 Results:");
+            var res = Task2();
+            res.ToList().ForEach(x => Console.Write(x));
             Console.WriteLine();
+            //foreach (var entry in res)
+            //{
+            //    Console.WriteLine(entry);
+            //}
 
             Console.WriteLine("Task 3: Start...");
             Task3();
@@ -63,11 +66,12 @@ namespace KPO_Lab5_LinqToXml
                 while (!sr.EndOfStream)
                 {
                     string[] words = sr.ReadLine().Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    Array.Sort(words);
-                    XElement nextLine = new XElement("line");
-                    foreach (string word in words)
-                        nextLine.Add(new XElement("word", word));
-                    root.Add(nextLine);
+                    
+                    //XElement nextLine = new XElement("line");
+                    //foreach (string word in words)
+                    //    nextLine.Add(new XElement("word", word));
+                    
+                    root.Add( new XElement( "line", from x in words orderby x select new XElement("word", x)));
                 }
             }
             res = new XDocument(root);
@@ -75,17 +79,26 @@ namespace KPO_Lab5_LinqToXml
         }
 
         //LinqXml12
-        static Dictionary<string, int> Task2()
+        static IEnumerable<string> Task2()
         {
             XDocument src = XDocument.Load(@"C:\Users\Acer\source\repos\KPO_Lab5_LinqToXml\KPO_Lab5_LinqToXml\Result_Xml_Files\Task2_Input_File");
-            Dictionary<string,int> namesDict = new Dictionary<string, int>();
-            foreach (XElement item in src.Root.Elements())
-            {
-                string key = item.Name.ToString();
-                if (namesDict.Keys.Contains(key)) namesDict[key]++;
-                else namesDict.Add(key, 1);
-            }
-            return namesDict;
+    
+            var temp = from str in (from elem in (from x in src.Root.Elements() orderby x.Name.LocalName group x by x.Name) select (elem.Key.ToString() + " //\t" + elem.AsEnumerable().Count().ToString() + "\n")) select str;
+
+            return temp;
+            //var groups = src.Root.Elements().GroupBy(x => x.Name).Select(x => x.Key.ToString());
+
+            //var nums = from x in groups select x.Count();
+
+            //Dictionary<string,int> namesDict = new Dictionary<string, int>();
+            //foreach (XElement item in src.Root.Elements())
+            //{
+            //    string key = item.Name.ToString();
+            //    if (namesDict.Keys.Contains(key)) namesDict[key]++;
+            //    else namesDict.Add(key, 1);
+            //}
+
+
         }
 
         //LinqXml24
@@ -93,20 +106,23 @@ namespace KPO_Lab5_LinqToXml
         {
             XDocument src = XDocument.Load(@"C:\Users\Acer\source\repos\KPO_Lab5_LinqToXml\KPO_Lab5_LinqToXml\Result_Xml_Files\Task3_Input_File");
             XDocument res = new XDocument(src);
-            List<XNode> remNodes = new List<XNode>();
-            foreach (var item in res.Root.Nodes())
-            {
-                if (item is XComment) {remNodes.Add(item); continue;}
-                if (item is XElement)
-                {
-                    foreach (var firstItem in ((XElement)item).Nodes())
-                        if (firstItem is XComment) remNodes.Add(firstItem);
-                }
-            }
-            foreach (var node in remNodes)
-            {
-                node.Remove();
-            }
+
+            res.Root.DescendantNodes().Where(x => x is XComment && (x.Parent.Name == "root" || x.Parent.Parent.Name == "root")).ToList().ForEach(x => x.Remove());
+
+            //List<XNode> remNodes = new List<XNode>();
+            //foreach (var item in res.Root.Nodes())
+            //{
+            //    if (item is XComment) {remNodes.Add(item); continue;}
+            //    if (item is XElement)
+            //    {
+            //        foreach (var firstItem in ((XElement)item).Nodes())
+            //            if (firstItem is XComment) remNodes.Add(firstItem);
+            //    }
+            //}
+            //foreach (var node in remNodes)
+            //{
+            //    node.Remove();
+            //}
             res.Save(@"C:\Users\Acer\source\repos\KPO_Lab5_LinqToXml\KPO_Lab5_LinqToXml\Result_Xml_Files\Task3_Result_File");
 
         }
@@ -117,15 +133,20 @@ namespace KPO_Lab5_LinqToXml
             XDocument src = XDocument.Load(@"C:\Users\Acer\source\repos\KPO_Lab5_LinqToXml\KPO_Lab5_LinqToXml\Result_Xml_Files\Task4_Input_File");
             XDocument res = new XDocument(src);
 
-            foreach (var item in res.Root.Elements())
-            {
-                if (!item.HasAttributes)
-                    continue;
-                var list = from attr in item.Attributes()
-                           select new XElement(attr.Name, attr.Value);
+            res.Root.Elements().Where(x => x.HasAttributes).ToList().
+                ForEach(x => x.ReplaceAttributes(x.Attributes().Select(attr => new XElement(attr.Name, attr.Value))));
+            
+            
 
-                item.ReplaceAttributes(list);
-            }
+            //foreach (var item in res.Root.Elements())
+            //{
+            //    if (!item.HasAttributes)
+            //        continue;
+            //    var list = from attr in item.Attributes()
+            //               select new XElement(attr.Name, attr.Value);
+
+            //    item.ReplaceAttributes(list);
+            //}
 
             res.Save(@"C:\Users\Acer\source\repos\KPO_Lab5_LinqToXml\KPO_Lab5_LinqToXml\Result_Xml_Files\Task4_Result_File");
         }
